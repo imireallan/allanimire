@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Allan Imire | Root Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Fira Code", monospace;
+        background-color: #0a0a0a;
+        color: #00ff41; /* Classic Matrix Green */
+      }
+      /* Retro Scanline Effect */
+      body::before {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.06),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.06)
+          );
+        z-index: 100;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+      .terminal-border {
+        border: 1px solid #00ff41;
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+      }
+      .hacker-btn {
+        border: 1px solid #00ff41;
+        transition: all 0.3s ease;
+      }
+      .hacker-btn:hover {
+        background-color: #00ff41;
+        color: #0a0a0a;
+        box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+      }
+      /* PDF object styling */
+      .pdf-container {
+        filter: grayscale(1) invert(0.9) sepia(1) hue-rotate(100deg)
+          brightness(0.8);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <div class="flex flex-col lg:flex-row min-h-screen p-4 lg:p-8 gap-6">
+      <div
+        class="lg:w-1/3 p-6 lg:p-10 flex flex-col justify-center terminal-border bg-black relative"
+      >
+        <div class="mb-4 text-xs opacity-50 uppercase tracking-widest">
+          [ System Status: Online ]
+        </div>
+
+        <h1 class="text-3xl font-bold mb-2">> ALLAN_IMIRE.exe</h1>
+        <p class="text-lg mb-6 text-green-400">$ role: software_engineer</p>
+
+        <div class="text-sm space-y-4 mb-8">
+          <p class="leading-relaxed">
+            <span class="text-white">root@portfolio:~$</span> cat summary.txt<br />
+            Results-driven engineer with 6+ years experience. Specialist in
+            building scalable integrations and high-performance interfaces[cite:
+            34].
+          </p>
+          <p>
+            <span class="text-white">root@portfolio:~$</span> ls ./skills/<br />
+            <span class="text-green-200"
+              >Node.js React Python Django TypeScript Javascipt AWS GCP</span
+            >
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <a
+            href="resume.pdf"
+            download
+            class="hacker-btn block w-full text-center py-3 px-6 rounded text-sm font-bold tracking-widest uppercase"
+          >
+            Get_Resume.pdf
+          </a>
+          <a
+            href="mailto:allanimire@gmail.com"
+            class="hacker-btn block w-full text-center py-3 px-6 rounded text-sm font-bold tracking-widest uppercase opacity-70"
+          >
+            Contact_User
+          </a>
+        </div>
+
+        <div class="mt-12 flex flex-wrap gap-4 text-xs">
+          <a
+            href="https://www.linkedin.com/in/allanimire/"
+            class="hover:underline text-white"
+            >#LINKEDIN</a
+          >
+          <a
+            href="https://github.com/imireallan"
+            class="hover:underline text-white"
+            >#GITHUB</a
+          >
+          <a
+            href="https://allanimire.webflow.io/"
+            class="hover:underline text-white"
+            >#PORTFOLIO</a
+          >
+        </div>
+      </div>
+
+      <div class="lg:w-2/3 flex flex-col">
+        <div
+          class="bg-[#00ff41] text-black px-4 py-1 text-xs font-bold flex justify-between"
+        >
+          <span>FILE_VIEWER: Allan-Imire-Resume.pdf</span>
+          <span>CTRL+P</span>
+        </div>
+        <div
+          class="w-full h-[600px] lg:h-full bg-black terminal-border overflow-hidden relative"
+        >
+          <object
+            data="resume.pdf"
+            type="application/pdf"
+            class="w-full h-full opacity-80"
+          >
+            <div
+              class="flex flex-col items-center justify-center h-full p-10 text-center"
+            >
+              <p class="mb-4">SYSTEM ERROR: PDF_VIEW_NOT_SUPPORTED</p>
+              <a href="resume.pdf" class="underline font-bold text-white"
+                >DOWNLOAD_MANUALLY</a
+              >
+            </div>
+          </object>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
