@@ -50,6 +50,7 @@
         background-size: 42px 42px, 42px 42px, auto, auto, auto;
         color: var(--ink);
         line-height: 1.55;
+        animation: gridDrift 24s linear infinite;
       }
 
       body::before {
@@ -139,6 +140,12 @@
         border-color: var(--ink);
       }
 
+      .button.copy-success {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: white;
+      }
+
       .hero {
         padding: 76px 0 54px;
         display: grid;
@@ -146,6 +153,12 @@
         gap: 42px;
         align-items: start;
       }
+
+      .hero > * {
+        animation: floatIn 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+
+      .hero > aside { animation-delay: 140ms; }
 
       .eyebrow {
         display: inline-flex;
@@ -204,6 +217,12 @@
         border: 1px solid var(--line-strong);
         border-radius: var(--radius);
         background: rgba(255, 253, 247, 0.78);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .proof:hover {
+        transform: translateY(-3px) rotate(-0.4deg);
+        box-shadow: 8px 8px 0 rgba(20, 20, 20, 0.08);
       }
 
       .proof::after {
@@ -241,6 +260,7 @@
         position: relative;
         padding: 18px;
         transform: rotate(0.6deg);
+        animation: documentFloat 7s ease-in-out infinite;
       }
 
       .cv-card::before {
@@ -269,6 +289,12 @@
         border-radius: 14px;
         background: #fff;
         border: 1px solid var(--line);
+        transition: transform 220ms ease, filter 220ms ease;
+      }
+
+      .cv-preview-link:hover .cv-preview {
+        transform: scale(1.012);
+        filter: saturate(1.04) contrast(1.02);
       }
 
       .cv-caption {
@@ -323,6 +349,13 @@
         border-radius: 24px;
         background: rgba(255, 253, 247, 0.86);
         overflow: hidden;
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+
+      .item:hover {
+        transform: translateY(-5px);
+        border-color: rgba(21, 94, 239, 0.42);
+        box-shadow: 10px 10px 0 rgba(21, 94, 239, 0.08);
       }
 
       .item::before {
@@ -367,6 +400,64 @@
       .project-link:hover {
         color: var(--orange);
       }
+
+      .share-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        padding: 24px;
+        border: 1px solid var(--line-strong);
+        border-radius: 26px;
+        background: var(--panel);
+        color: var(--panel-text);
+        box-shadow: 12px 12px 0 rgba(20, 20, 20, 0.1);
+      }
+
+      .share-card h2 { color: var(--panel-text); }
+
+      .share-card p {
+        margin: 10px 0 0;
+        color: #dfd8cc;
+      }
+
+      .share-link {
+        display: inline-flex;
+        margin-top: 16px;
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 12px;
+        color: #bfdbfe;
+        background: rgba(255, 255, 255, 0.06);
+        font-family: var(--mono);
+        font-size: 13px;
+        word-break: break-all;
+        text-decoration: none;
+      }
+
+      .share-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .share-actions .button {
+        background: var(--paper-2);
+        color: var(--ink);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 520ms ease, transform 520ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
 
       .tags {
         display: flex;
@@ -461,12 +552,40 @@
         border-top: 1px solid var(--line);
       }
 
+      @keyframes gridDrift {
+        from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+        to { background-position: 42px 42px, 42px 42px, 0 0, 0 0, 0 0; }
+      }
+
+      @keyframes floatIn {
+        from { opacity: 0; transform: translateY(18px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes documentFloat {
+        0%, 100% { transform: rotate(0.6deg) translateY(0); }
+        50% { transform: rotate(-0.35deg) translateY(-8px); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+
+
       @media (max-width: 1040px) {
         .hero,
         .section-head,
         .grid-2,
         .skills { grid-template-columns: 1fr; }
         .proof-grid { grid-template-columns: 1fr; }
+        .share-card { grid-template-columns: 1fr; }
+        .share-actions { justify-content: flex-start; }
         .cv-card { transform: none; }
       }
 
@@ -509,8 +628,9 @@
         <div class="nav-links">
           <a class="pill" href="#projects">Projects</a>
           <a class="pill" href="#experience">Experience</a>
-          <a class="pill" href="https://allanimire.webflow.io/">Portfolio</a>
-          <a class="button primary" href="resume.pdf">View CV</a>
+          <a class="pill" href="#resume">Resume link</a>
+          <a class="pill" href="https://allanimire.webflow.io/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+          <a class="button primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">View CV</a>
         </div>
       </nav>
     </header>
@@ -519,16 +639,16 @@
       <div class="shell hero">
         <div>
           <div class="eyebrow">Product-minded engineering for web, cloud, and AI systems</div>
-          <h1>I design, build, and ship production software systems.</h1>
+          <h1>Software systems portfolio. Resume included.</h1>
           <p class="lead">
-            Senior software engineer working across backend, frontend, cloud, and AI-assisted workflows. I turn ambiguous product requirements into reliable systems using Django, FastAPI, Node.js, React, TypeScript, PostgreSQL, AWS, and GCP.
+            I’m Allan Imire, a senior software engineer working across backend, frontend, cloud, and AI-assisted workflows. This portfolio highlights selected systems I have built, with a shareable resume link for recruiters, clients, and technical reviewers.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="resume.pdf" download>Download CV</a>
-            <a class="button" href="resume.md">Read resume</a>
-            <a class="button" href="mailto:allanimire@gmail.com">allanimire@gmail.com</a>
-            <a class="button" href="https://github.com/imireallan">GitHub</a>
-            <a class="button" href="https://www.linkedin.com/in/allanimire/">LinkedIn</a>
+            <a class="button primary" href="resume.pdf" download target="_blank" rel="noopener noreferrer">Download CV</a>
+            <a class="button" href="resume.md" target="_blank" rel="noopener noreferrer">Read resume</a>
+            <a class="button" href="mailto:allanimire@gmail.com" target="_blank">allanimire@gmail.com</a>
+            <a class="button" href="https://github.com/imireallan" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="button" href="https://www.linkedin.com/in/allanimire/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
           <div class="proof-grid" aria-label="Engineering proof points">
             <div class="proof"><strong>6+ years</strong><span>Production engineering across fintech, sustainability, health, logistics, and automation.</span></div>
@@ -538,17 +658,17 @@
         </div>
 
         <aside class="card cv-card" aria-label="Allan Imire resume preview">
-          <a class="cv-preview-link" href="resume.pdf" aria-label="Open Allan Imire resume PDF">
+          <a class="cv-preview-link" href="resume.pdf" aria-label="Open Allan Imire resume PDF" target="_blank" rel="noopener noreferrer">
             <img class="cv-preview" src="resume-preview.png" alt="Full-page preview of Allan Imire's resume" />
           </a>
           <div class="cv-caption">
             <span>Full resume preview</span>
-            <a href="resume.pdf">Open PDF</a>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
           </div>
         </aside>
       </div>
 
-      <section class="shell" id="projects">
+      <section class="shell reveal" id="projects">
         <div class="section-head">
           <h2>Selected production work</h2>
           <p>Client-facing platforms, AI workflows, and operational systems built with a production-first engineering mindset.</p>
@@ -561,7 +681,7 @@
               <li>Built a polished full-stack product experience that transforms static family records into a navigable, modern digital archive.</li>
               <li>Focused on presentation quality, data structure, and storytelling so the product feels useful to families, founders, and legacy-driven organizations.</li>
             </ul>
-            <a class="project-link" href="https://lineage-tree.vercel.app/">View live project →</a>
+            <a class="project-link" href="https://lineage-tree.vercel.app/" target="_blank" rel="noopener noreferrer">View live project →</a>
             <div class="tags"><span class="tag">Full-stack</span><span class="tag">Vercel</span><span class="tag">Interactive archive</span><span class="tag">Data visualization</span><span class="tag">Product UX</span></div>
           </article>
           <article class="item">
@@ -571,7 +691,7 @@
               <li>Built a microservices system with a Python/FastAPI inference engine and Node.js/TypeScript automation service.</li>
               <li>Containerized services with Docker and deployed on AWS ECS/Fargate behind production routing for scalable AI workflows.</li>
             </ul>
-            <a class="project-link" href="http://ec2-100-25-148-154.compute-1.amazonaws.com/">View live project →</a>
+            <a class="project-link" href="http://ec2-100-25-148-154.compute-1.amazonaws.com/" target="_blank" rel="noopener noreferrer">View live project →</a>
             <div class="tags"><span class="tag">FastAPI</span><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">Docker</span><span class="tag">AWS ECS</span><span class="tag">AI orchestration</span></div>
           </article>
           <article class="item">
@@ -581,13 +701,27 @@
               <li>Designed tenant-aware assessment, questionnaire, evidence, reporting, and continuous-monitoring workflows.</li>
               <li>Built with React Router v7, Django, PostgreSQL, Docker, organization-scoped permissions, and reusable workflow components.</li>
             </ul>
-            <a class="project-link" href="http://ec2-18-232-192-212.compute-1.amazonaws.com/">View live project →</a>
+            <a class="project-link" href="http://ec2-18-232-192-212.compute-1.amazonaws.com/" target="_blank" rel="noopener noreferrer">View live project →</a>
             <div class="tags"><span class="tag">Django</span><span class="tag">React Router v7</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">RBAC</span><span class="tag">Multi-tenant SaaS</span></div>
           </article>
         </div>
       </section>
 
-      <section class="shell" id="experience">
+      <section class="shell reveal" id="resume">
+        <div class="share-card">
+          <div>
+            <h2>Shareable resume link</h2>
+            <p>Use this portfolio as the public entry point, or share the direct PDF when a form asks specifically for a resume file.</p>
+            <a class="share-link" href="https://imireallan.github.io/resume-repository/" target="_blank" rel="noopener noreferrer">https://imireallan.github.io/resume-repository/</a>
+          </div>
+          <div class="share-actions">
+            <button class="button" id="copyResumeLink" type="button" data-copy="https://imireallan.github.io/resume-repository/">Copy link</button>
+            <a class="button primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="experience">
         <div class="section-head">
           <h2>Professional experience</h2>
           <p>Production roles, not toy projects. The throughline is shipping, reviewing, deploying, and improving systems under real constraints.</p>
@@ -600,7 +734,7 @@
         </div>
       </section>
 
-      <section class="shell">
+      <section class="shell reveal">
         <div class="section-head">
           <h2>Core stack</h2>
           <p>The tools and practices I use to design, build, deploy, and maintain production software.</p>
@@ -619,5 +753,33 @@
         <p>© Allan Imire. Senior Software Engineer · Nairobi, Kenya · allanimire@gmail.com</p>
       </div>
     </footer>
+    <script>
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+
+      document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+      const copyButton = document.querySelector('#copyResumeLink');
+      copyButton?.addEventListener('click', async () => {
+        const link = copyButton.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(link);
+          copyButton.textContent = 'Copied';
+          copyButton.classList.add('copy-success');
+          window.setTimeout(() => {
+            copyButton.textContent = 'Copy link';
+            copyButton.classList.remove('copy-success');
+          }, 1800);
+        } catch (error) {
+          window.prompt('Copy resume link', link);
+        }
+      });
+    </script>
   </body>
 </html>
