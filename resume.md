@@ -15,7 +15,17 @@ Senior software engineer with 6+ years of production experience across the full 
 
 ## Selected Projects
 
+### Full-stack Lineage and Legacy Application
+
+Live: https://lineage-tree.vercel.app/
+
+- Built a high-fidelity digital archive and visualization platform for preserving multi-generational heritage and professional legacies.
+- Transformed static family records into an interactive full-stack web experience with polished presentation, structured data, and narrative-first UX.
+- Designed the product to feel useful for families, founders, and legacy-driven organizations that need more than a static document archive.
+
 ### Veris — Product Engineer, Multi-Tenant AI Compliance Platform
+
+Live: http://ec2-18-232-192-212.compute-1.amazonaws.com/
 
 - Architected and built product modules for a B2B multi-tenant compliance platform using Django, FastAPI, React Router, PostgreSQL, and RBAC.
 - Built reusable React Router modules for assessments, evidence workflows, AI output review, and organization-scoped role-based UX.
@@ -23,21 +33,11 @@ Senior software engineer with 6+ years of production experience across the full 
 
 ### ApplyFlow AI — Founder / Full Stack Engineer
 
+Live: http://ec2-100-25-148-154.compute-1.amazonaws.com/
+
 - Designed and built an AI-powered job application optimizer across FastAPI, React Router, TypeScript, PostgreSQL, Pinecone, cloud deployment, and CI/CD.
 - Implemented retrieval and structured-output workflows for resume/job matching while keeping AI orchestration separate from core business logic.
 - Built frontend data-fetching, responsive UI, structured result rendering, and backend API flows end to end.
-
-### Voyage Control — Logistics Platform
-
-- Designed Django REST APIs and Angular frontend features for logistics software serving construction, events, and port clients.
-- Optimized Django ORM/database bottlenecks, improving system responsiveness and reducing response times by roughly 30%.
-- Built booking automation that reduced manual scheduling effort by roughly 60%.
-
-### Offline Business Analyzer — Manufacturing Analytics
-
-- Built a Django/React/PostgreSQL analytics workflow for manufacturing clients to upload CSV templates and analyze operational data.
-- Processed CSV workflows with Python and async task queues using Celery and RabbitMQ.
-- Built React forms and REST-backed dashboards for period-based incoming/outgoing analysis.
 
 ## Work Experience
 
