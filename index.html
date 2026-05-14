@@ -3,134 +3,512 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Allan Imire | Root Console</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Allan Imire — Senior Software Engineer. Production engineering, AI products, Django, FastAPI, React, TypeScript, PostgreSQL, AWS, and GCP."
     />
+    <meta property="og:title" content="Allan Imire | Senior Software Engineer CV" />
+    <meta
+      property="og:description"
+      content="Public CV and engineering portfolio for senior software engineering roles."
+    />
+    <meta property="og:type" content="website" />
+    <title>Allan Imire | Senior Software Engineer CV</title>
     <style>
+      :root {
+        color-scheme: dark;
+        --bg: #080b10;
+        --panel: #111827;
+        --panel-2: #0f172a;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --line: rgba(148, 163, 184, 0.22);
+        --accent: #22c55e;
+        --accent-2: #38bdf8;
+        --warn: #f59e0b;
+        --white: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+
       body {
-        font-family: "Fira Code", monospace;
-        background-color: #0a0a0a;
-        color: #00ff41; /* Classic Matrix Green */
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 32rem),
+          radial-gradient(circle at top right, rgba(56, 189, 248, 0.13), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.55;
       }
-      /* Retro Scanline Effect */
-      body::before {
-        content: " ";
-        display: block;
-        position: fixed;
+
+      a { color: inherit; }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+        position: sticky;
         top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 100;
-        background-size: 100% 2px, 3px 100%;
-        pointer-events: none;
+        z-index: 10;
+        background: rgba(8, 11, 16, 0.82);
+        backdrop-filter: blur(18px);
       }
-      .terminal-border {
-        border: 1px solid #00ff41;
-        box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
       }
-      .hacker-btn {
-        border: 1px solid #00ff41;
-        transition: all 0.3s ease;
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
       }
-      .hacker-btn:hover {
-        background-color: #00ff41;
-        color: #0a0a0a;
-        box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+
+      .brand strong {
+        font-size: 16px;
+        letter-spacing: 0.02em;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 14px;
+        text-decoration: none;
+        font-size: 14px;
+        color: var(--text);
+        background: rgba(17, 24, 39, 0.72);
+      }
+
+      .button.primary {
+        border-color: rgba(34, 197, 94, 0.58);
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(20, 184, 166, 0.9));
+        color: #03110a;
+        font-weight: 800;
+      }
+
+      .hero {
+        padding: 72px 0 48px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
+        gap: 32px;
+        align-items: start;
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: clamp(40px, 6vw, 76px);
+        line-height: 0.95;
+        margin: 12px 0 20px;
+        letter-spacing: -0.06em;
+      }
+
+      .lead {
+        color: #cbd5e1;
+        font-size: clamp(18px, 2vw, 22px);
+        max-width: 760px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .proof {
+        border: 1px solid var(--line);
+        background: rgba(15, 23, 42, 0.72);
+        border-radius: 18px;
+        padding: 16px;
+      }
+
+      .proof strong {
+        display: block;
+        color: var(--white);
+        font-size: 22px;
+      }
+
+      .proof span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(17, 24, 39, 0.94), rgba(15, 23, 42, 0.86));
+        border-radius: 28px;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      }
+
+      .cv-card {
+        overflow: hidden;
+        min-height: 650px;
+      }
+
+      .cv-toolbar {
+        padding: 14px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(2, 6, 23, 0.72);
+      }
+
+      .cv-toolbar span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      object {
+        width: 100%;
+        height: 610px;
+        display: block;
+        background: #111;
+      }
+
+      section { padding: 36px 0; }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(26px, 3vw, 40px);
+        letter-spacing: -0.04em;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 560px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .item {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(15, 23, 42, 0.78);
+      }
+
+      .item h3 {
+        margin: 0 0 8px;
+        font-size: 20px;
+      }
+
+      .item p,
+      .item li {
+        color: #cbd5e1;
+      }
+
+      .item ul {
+        padding-left: 20px;
+        margin: 12px 0 0;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .tag {
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        color: #bae6fd;
+        background: rgba(56, 189, 248, 0.08);
+        border-radius: 999px;
+        padding: 5px 9px;
+        font-size: 12px;
+      }
+
+      .experience {
+        display: grid;
+        gap: 12px;
+      }
+
+      .role {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(15, 23, 42, 0.66);
+      }
+
+      .role-meta {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .role h3 {
+        margin: 0 0 6px;
+      }
+
+      .role p { margin: 0; color: #cbd5e1; }
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .skill-col {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(15, 23, 42, 0.72);
+      }
+
+      .skill-col h3 {
+        margin: 0 0 10px;
+        color: var(--accent-2);
+        font-size: 15px;
+      }
+
+      .skill-col p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 14px;
+      }
+
+      .answer-box {
+        border-left: 4px solid var(--accent);
+        padding: 20px;
+        background: rgba(34, 197, 94, 0.08);
+        border-radius: 16px;
+        color: #dcfce7;
+      }
+
+      footer {
+        padding: 32px 0 46px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        margin-top: 24px;
+      }
+
+      @media (max-width: 940px) {
+        .hero,
+        .grid-2,
+        .skills { grid-template-columns: 1fr; }
+        .proof-grid { grid-template-columns: 1fr; }
+        .role { grid-template-columns: 1fr; }
+        header { position: static; }
       }
     </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Allan Imire",
+        "jobTitle": "Senior Software Engineer",
+        "email": "mailto:allanimire@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "Kenya" },
+        "url": "https://imireallan.github.io/resume-repository/",
+        "sameAs": [
+          "https://www.linkedin.com/in/allanimire/",
+          "https://github.com/imireallan",
+          "https://allanimire.webflow.io/"
+        ],
+        "knowsAbout": ["Python", "Django", "FastAPI", "React", "TypeScript", "PostgreSQL", "AWS", "GCP", "AI workflow systems"]
+      }
+    </script>
   </head>
-  <body class="min-h-screen">
-    <div class="flex flex-col lg:flex-row min-h-screen p-4 lg:p-8 gap-6">
-      <div
-        class="lg:w-1/3 p-6 lg:p-10 flex flex-col justify-center terminal-border bg-black relative"
-      >
-        <div class="mb-4 text-xs opacity-50 uppercase tracking-widest">
-          [ System Status: Online ]
+  <body>
+    <header>
+      <nav class="shell">
+        <a href="#top" class="brand" aria-label="Allan Imire CV home">
+          <strong>Allan Imire</strong>
+          <span>Senior Software Engineer · Nairobi, Kenya</span>
+        </a>
+        <div class="nav-links">
+          <a class="pill" href="#projects">Projects</a>
+          <a class="pill" href="#experience">Experience</a>
+          <a class="pill" href="https://allanimire.webflow.io/">Portfolio</a>
+          <a class="button primary" href="resume.pdf">Open CV PDF</a>
         </div>
+      </nav>
+    </header>
 
-        <h1 class="text-3xl font-bold mb-2">> ALLAN_IMIRE.exe</h1>
-        <p class="text-lg mb-6 text-green-400">$ role: software_engineer</p>
-
-        <div class="text-sm space-y-4 mb-8">
-          <p class="leading-relaxed">
-            <span class="text-white">root@portfolio:~$</span> cat summary.txt<br />
-            Results-driven engineer with 6+ years experience. Specialist in
-            building scalable integrations and high-performance interfaces[cite:
-            34].
+    <main id="top">
+      <div class="shell hero">
+        <div>
+          <div class="eyebrow">Public CV for technical assessment review</div>
+          <h1>Senior Software Engineer shipping production AI and web systems.</h1>
+          <p class="lead">
+            I build reliable production software across backend, frontend, cloud, and AI-assisted workflows: Django, FastAPI, Node.js, React, TypeScript, PostgreSQL, REST/GraphQL APIs, AWS, and GCP. My strongest signal is turning complex product requirements into maintainable systems that teams can operate, extend, and ship.
           </p>
-          <p>
-            <span class="text-white">root@portfolio:~$</span> ls ./skills/<br />
-            <span class="text-green-200"
-              >Node.js React Python Django TypeScript Javascipt AWS GCP</span
-            >
-          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="resume.pdf" download>Download resume.pdf</a>
+            <a class="button" href="resume.md">Read ATS text version</a>
+            <a class="button" href="mailto:allanimire@gmail.com">allanimire@gmail.com</a>
+            <a class="button" href="https://github.com/imireallan">GitHub</a>
+            <a class="button" href="https://www.linkedin.com/in/allanimire/">LinkedIn</a>
+          </div>
+          <div class="proof-grid" aria-label="Engineering proof points">
+            <div class="proof"><strong>6+ years</strong><span>Production engineering across fintech, sustainability, health, logistics, and automation.</span></div>
+            <div class="proof"><strong>Full stack</strong><span>Python/Django/FastAPI, Node.js, React/TypeScript, PostgreSQL, REST/GraphQL.</span></div>
+            <div class="proof"><strong>Cloud + AI</strong><span>AWS/GCP, CI/CD, RBAC, multi-tenant architecture, AI structured outputs, retrieval workflows.</span></div>
+          </div>
         </div>
 
-        <div class="space-y-4">
-          <a
-            href="resume.pdf"
-            download
-            class="hacker-btn block w-full text-center py-3 px-6 rounded text-sm font-bold tracking-widest uppercase"
-          >
-            Get_Resume.pdf
-          </a>
-          <a
-            href="mailto:allanimire@gmail.com"
-            class="hacker-btn block w-full text-center py-3 px-6 rounded text-sm font-bold tracking-widest uppercase opacity-70"
-          >
-            Contact_User
-          </a>
-        </div>
-
-        <div class="mt-12 flex flex-wrap gap-4 text-xs">
-          <a
-            href="https://www.linkedin.com/in/allanimire/"
-            class="hover:underline text-white"
-            >#LINKEDIN</a
-          >
-          <a
-            href="https://github.com/imireallan"
-            class="hover:underline text-white"
-            >#GITHUB</a
-          >
-          <a
-            href="https://allanimire.webflow.io/"
-            class="hover:underline text-white"
-            >#PORTFOLIO</a
-          >
-        </div>
-      </div>
-
-      <div class="lg:w-2/3 flex flex-col">
-        <div
-          class="bg-[#00ff41] text-black px-4 py-1 text-xs font-bold flex justify-between"
-        >
-          <span>FILE_VIEWER: Allan-Imire-Resume.pdf</span>
-          <span>CTRL+P</span>
-        </div>
-        <div
-          class="w-full h-[600px] lg:h-full bg-black terminal-border overflow-hidden relative"
-        >
-          <object
-            data="resume.pdf"
-            type="application/pdf"
-            class="w-full h-full opacity-80"
-          >
-            <div
-              class="flex flex-col items-center justify-center h-full p-10 text-center"
-            >
-              <p class="mb-4">SYSTEM ERROR: PDF_VIEW_NOT_SUPPORTED</p>
-              <a href="resume.pdf" class="underline font-bold text-white"
-                >DOWNLOAD_MANUALLY</a
-              >
+        <aside class="card cv-card" aria-label="Embedded resume PDF">
+          <div class="cv-toolbar">
+            <strong>Allan_Imire_Resume.pdf</strong>
+            <span>No login required</span>
+          </div>
+          <object data="resume.pdf" type="application/pdf">
+            <div style="padding: 24px;">
+              <p>Your browser cannot preview PDFs here.</p>
+              <p><a href="resume.pdf">Open or download Allan Imire's CV</a>.</p>
             </div>
           </object>
-        </div>
+        </aside>
       </div>
-    </div>
+
+      <section class="shell" id="projects">
+        <div class="section-head">
+          <h2>Selected production work</h2>
+          <p>These are the projects I want reviewers to notice before deciding whether I advance to a technical assessment.</p>
+        </div>
+        <div class="grid-2">
+          <article class="item">
+            <h3>Veris — Multi-tenant AI compliance platform</h3>
+            <p>Product engineering across tenant-aware assessment workflows, evidence management, role-based UX, and AI-generated structured outputs for B2B sustainability/compliance use cases.</p>
+            <ul>
+              <li>Designed reusable React Router modules for assessments, evidence workflows, and organization-scoped UX.</li>
+              <li>Worked across Django, FastAPI, PostgreSQL, RBAC, API boundaries, and secure role-based product flows.</li>
+            </ul>
+            <div class="tags"><span class="tag">Django</span><span class="tag">FastAPI</span><span class="tag">React Router</span><span class="tag">PostgreSQL</span><span class="tag">RBAC</span><span class="tag">AI outputs</span></div>
+          </article>
+          <article class="item">
+            <h3>ApplyFlow AI — AI job application optimizer</h3>
+            <p>Founder/full-stack engineer building an AI-powered workflow for resume/job matching, retrieval, structured output rendering, and cloud deployment.</p>
+            <ul>
+              <li>Built FastAPI backend, React Router frontend, PostgreSQL storage, Pinecone vector retrieval, and CI/CD flows.</li>
+              <li>Separated AI orchestration from business logic to keep provider choices flexible and outputs structured.</li>
+            </ul>
+            <div class="tags"><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Pinecone</span><span class="tag">LangChain</span><span class="tag">AWS</span></div>
+          </article>
+          <article class="item">
+            <h3>Voyage Control — Logistics platform</h3>
+            <p>Full-stack engineering for transportation hub operations used across construction, events, and port clients.</p>
+            <ul>
+              <li>Designed Django REST APIs, optimized database access, and built booking automation that reduced manual scheduling.</li>
+              <li>Maintained Angular frontend features and contributed across the Django/Angular/MySQL stack.</li>
+            </ul>
+            <div class="tags"><span class="tag">Django</span><span class="tag">Angular</span><span class="tag">REST</span><span class="tag">MySQL</span><span class="tag">SASS</span></div>
+          </article>
+          <article class="item">
+            <h3>Offline Business Analyzer — Manufacturing analytics</h3>
+            <p>Dashboard for manufacturing clients to upload CSV templates and analyze incoming/outgoing operational data over time.</p>
+            <ul>
+              <li>Processed CSV workflows with Python and asynchronous task queues using Celery/RabbitMQ.</li>
+              <li>Built React forms and Django REST/PostgreSQL-backed analytics workflows.</li>
+            </ul>
+            <div class="tags"><span class="tag">Django</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">Celery</span><span class="tag">RabbitMQ</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell" id="experience">
+        <div class="section-head">
+          <h2>Experience signal</h2>
+          <p>Production roles, not toy projects. The throughline is shipping, reviewing, deploying, and improving systems under real constraints.</p>
+        </div>
+        <div class="experience">
+          <div class="role"><div class="role-meta">2024–2025<br />Athena</div><div><h3>Platform Engineer</h3><p>Node.js integrations, HubSpot/CRM automation, serverless GCP pipelines, Pub/Sub workflows, monitoring, stakeholder documentation, and code review.</p></div></div>
+          <div class="role"><div class="role-meta">2022–2023<br />TDi Sustainability</div><div><h3>Software Engineer</h3><p>Python, Docker, AWS EKS/RDS, GitLab CI/CD, Nginx, responsive frontend delivery, deployment automation with Ansible, pytest/MyPy quality gates.</p></div></div>
+          <div class="role"><div class="role-meta">2021–2022<br />I&M Bank Group</div><div><h3>Frontend Engineer</h3><p>Customer-facing banking UI in a regulated fintech environment, Agile delivery with product/UX, Backbase ramp-up under tight timelines.</p></div></div>
+          <div class="role"><div class="role-meta">2018–2021<br />GoodInfo, Voyage Control, Andela</div><div><h3>Software Engineer / Associate Software Engineer</h3><p>React, GraphQL/REST integrations, Django APIs, Angular features, Celery workflows, database optimization, mentoring, and code review improvement.</p></div></div>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="section-head">
+          <h2>Core stack</h2>
+          <p>Grouped for recruiters and ATS scanners while keeping the page readable for engineers.</p>
+        </div>
+        <div class="skills">
+          <div class="skill-col"><h3>Backend</h3><p>Python, Django, FastAPI, Node.js, REST APIs, GraphQL, authentication/authorization, RBAC, tenant-aware architecture.</p></div>
+          <div class="skill-col"><h3>Frontend</h3><p>React, React Router, Angular, TypeScript, JavaScript, accessible components, responsive UI, performance optimization.</p></div>
+          <div class="skill-col"><h3>Data + AI</h3><p>PostgreSQL, SQL, Pinecone, retrieval workflows, structured AI outputs, provider-agnostic AI orchestration, automation pipelines.</p></div>
+          <div class="skill-col"><h3>Cloud + Delivery</h3><p>AWS, GCP Cloud Functions/Pub/Sub, Docker, Linux, Nginx, Ansible, GitHub Actions, GitLab CI/CD, pytest, MyPy.</p></div>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="section-head">
+          <h2>Paste-ready application answer</h2>
+          <p>Use this when an application asks for a public CV/resume link.</p>
+        </div>
+        <div class="answer-box">
+          Paste this link: https://imireallan.github.io/resume-repository/
+          <br /><br />
+          If the form specifically asks for a direct PDF: https://imireallan.github.io/resume-repository/resume.pdf
+          <br /><br />
+          Both are intended to be publicly accessible without requiring Google Drive, Dropbox, OneDrive, or account login.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">
+        <p>© Allan Imire. Senior Software Engineer · Nairobi, Kenya · allanimire@gmail.com</p>
+      </div>
+    </footer>
   </body>
 </html>

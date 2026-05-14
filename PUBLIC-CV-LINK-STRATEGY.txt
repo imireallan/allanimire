@@ -1,0 +1,33 @@
+Public CV link strategy for Allan Imire
+
+Primary answer to paste into forms:
+https://imireallan.github.io/resume-repository/
+
+Direct PDF fallback:
+https://imireallan.github.io/resume-repository/resume.pdf
+
+Why this is stronger than Google Drive/Dropbox:
+- No login wall if GitHub Pages is enabled.
+- The reviewer sees a polished CV landing page plus the embedded PDF.
+- The page reinforces senior software engineer positioning before the PDF is opened.
+- It combines your current resume with portfolio project proof.
+- It gives ATS/human reviewers a text version through resume.md.
+
+What changed in the repo:
+- index.html is now a senior software engineer CV landing page, not a hacker-style PDF wrapper.
+- resume.md contains an ATS-readable text version of the CV.
+- README.md documents the correct links and maintenance process.
+- resume.pdf has been replaced with the newest exported resume from /Users/allanimire/Documents/cvs/Allan_Imire_Resume.pdf.
+
+Recommended form answer:
+"My CV is available here with no login required: https://imireallan.github.io/resume-repository/. Direct PDF: https://imireallan.github.io/resume-repository/resume.pdf"
+
+Important setup:
+1. Push this repo to GitHub.
+2. In GitHub, go to Settings → Pages.
+3. Set Source to "Deploy from a branch".
+4. Choose branch `main` and folder `/root`.
+5. Save.
+6. Wait 1–3 minutes, then test both links in an incognito/private browser.
+
+If GitHub Pages is already enabled, only pushing the changes is needed.
