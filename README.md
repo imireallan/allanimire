@@ -41,3 +41,4 @@ When updating the portfolio or CV:
 3. Update `resume.md` with matching role titles, projects, links, dates, and skills.
 4. Keep `index.html` focused on portfolio proof, production impact, and direct resume access.
 5. Test locally with `python3 -m http.server 3000` before deploying.
+6. On Vercel, keep Framework Preset as `Other`, Build Command empty, Install Command empty, and Output Directory empty or `.`.
