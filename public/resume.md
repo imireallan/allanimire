@@ -5,9 +5,9 @@ Senior Software Engineer
 Nairobi, Kenya | allanimire@gmail.com | +254 **** 5069
 LinkedIn: https://www.linkedin.com/in/allanimire/
 GitHub: https://github.com/imireallan
-Portfolio: https://allanimire.webflow.io/
-Public CV: https://imireallan.github.io/resume-repository/
-Direct PDF: https://imireallan.github.io/resume-repository/resume.pdf
+Portfolio: https://allanimire.vercel.app/
+Public CV: https://allanimire.vercel.app/
+Direct PDF: https://allanimire.vercel.app/resume.pdf
 
 ## Summary
 
