@@ -15,11 +15,11 @@ Use Vercel as the primary host for the portfolio site. See `DEPLOYMENT.md`.
 
 Recommended public links after deploying:
 
-- Portfolio: `https://<your-vercel-domain>/`
-- Direct resume PDF: `https://<your-vercel-domain>/resume.pdf`
-- ATS resume text: `https://<your-vercel-domain>/resume.md`
+- Portfolio: `https://allanimire.vercel.app/`
+- Direct resume PDF: `https://allanimire.vercel.app/resume.pdf`
+- ATS resume text: `https://allanimire.vercel.app/resume.md`
 
-GitHub Pages can remain as a fallback mirror, but Vercel should be the main portfolio link once the domain is configured.
+Vercel is the primary portfolio host. Keep the Vercel project name as `allanimire` so the stable production URL remains `https://allanimire.vercel.app/`.
 
 ## Positioning
 
@@ -40,5 +40,5 @@ When updating the portfolio or CV:
 2. Regenerate `resume-preview.png` from the updated PDF.
 3. Update `resume.md` with matching role titles, projects, links, dates, and skills.
 4. Keep `index.html` focused on portfolio proof, production impact, and direct resume access.
-5. Test locally with `python3 -m http.server 3000` before deploying.
-6. On Vercel, keep Framework Preset as `Other`, Build Command empty, Install Command empty, and Output Directory empty or `.`.
+5. Test locally with `npm run build` before deploying.
+6. On Vercel, use Framework Preset `Vite`, Build Command `npm run build`, and Output Directory `dist`.
