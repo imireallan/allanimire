@@ -1,41 +1,43 @@
-# Allan Imire — Public CV Repository
+# Allan Imire — Software Engineering Portfolio
 
-This repository hosts Allan Imire's public CV page for job applications that require a publicly accessible resume link with no login.
+This repository hosts Allan Imire's public software engineering portfolio and resume.
 
-Recommended application links:
+Primary artifacts:
 
-- Public CV page: https://imireallan.github.io/resume-repository/
-- Direct PDF: https://imireallan.github.io/resume-repository/resume.pdf
-- ATS text version: https://imireallan.github.io/resume-repository/resume.md
-- Portfolio: https://allanimire.webflow.io/
+- Portfolio site: `/`
+- Direct resume PDF: `/resume.pdf`
+- ATS-readable resume text: `/resume.md`
+- Resume preview image: `/resume-preview.png`
 
-## Paste-ready answer for application forms
+## Recommended deployment
 
-Use this when the field asks: "Paste a publicly accessible link to your CV/Resume. Ensure the link does not require a login to view."
+Use Vercel as the primary host for the portfolio site. See `DEPLOYMENT.md`.
 
-https://imireallan.github.io/resume-repository/
+Recommended public links after deploying:
 
-If the form specifically wants a direct PDF file, use:
+- Portfolio: `https://<your-vercel-domain>/`
+- Direct resume PDF: `https://<your-vercel-domain>/resume.pdf`
+- ATS resume text: `https://<your-vercel-domain>/resume.md`
 
-https://imireallan.github.io/resume-repository/resume.pdf
+GitHub Pages can remain as a fallback mirror, but Vercel should be the main portfolio link once the domain is configured.
 
 ## Positioning
 
-The page is designed to make the CV stronger than a bare PDF link by combining:
+The site is designed as a public/client-facing software engineer portfolio:
 
-- a direct embedded/downloadable PDF;
-- a senior software engineer headline;
-- production engineering proof points;
-- selected AI/product projects from Veris and ApplyFlow AI;
-- portfolio project evidence from Voyage Control and Offline Business Analyzer;
-- standard ATS-readable resume text in `resume.md`.
+- senior software engineering positioning;
+- selected production systems: Lineage, ApplyFlow, and Veris;
+- live project links;
+- direct resume PDF access;
+- ATS-readable resume text;
+- lightweight animations and a distinct portfolio visual style.
 
 ## Maintenance checklist
 
-When updating the CV:
+When updating the portfolio or CV:
 
 1. Replace `resume.pdf` with the latest exported PDF.
-2. Update `resume.md` with the same role titles, projects, dates, and skills.
-3. Keep `index.html` focused on senior software engineering, production impact, and direct links.
-4. Avoid private links, login-required Google Drive URLs, screenshots-only resumes, or decorative content that hides the actual CV.
-5. After pushing to GitHub, open the GitHub Pages URL in a private/incognito browser to confirm it works without authentication.
+2. Regenerate `resume-preview.png` from the updated PDF.
+3. Update `resume.md` with matching role titles, projects, links, dates, and skills.
+4. Keep `index.html` focused on portfolio proof, production impact, and direct resume access.
+5. Test locally with `python3 -m http.server 3000` before deploying.

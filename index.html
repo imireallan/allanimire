@@ -140,12 +140,6 @@
         border-color: var(--ink);
       }
 
-      .button.copy-success {
-        background: var(--blue);
-        border-color: var(--blue);
-        color: white;
-      }
-
       .hero {
         padding: 76px 0 54px;
         display: grid;
@@ -401,52 +395,6 @@
         color: var(--orange);
       }
 
-      .share-card {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 18px;
-        align-items: center;
-        padding: 24px;
-        border: 1px solid var(--line-strong);
-        border-radius: 26px;
-        background: var(--panel);
-        color: var(--panel-text);
-        box-shadow: 12px 12px 0 rgba(20, 20, 20, 0.1);
-      }
-
-      .share-card h2 { color: var(--panel-text); }
-
-      .share-card p {
-        margin: 10px 0 0;
-        color: #dfd8cc;
-      }
-
-      .share-link {
-        display: inline-flex;
-        margin-top: 16px;
-        padding: 10px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 12px;
-        color: #bfdbfe;
-        background: rgba(255, 255, 255, 0.06);
-        font-family: var(--mono);
-        font-size: 13px;
-        word-break: break-all;
-        text-decoration: none;
-      }
-
-      .share-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: flex-end;
-      }
-
-      .share-actions .button {
-        background: var(--paper-2);
-        color: var(--ink);
-      }
-
       .reveal {
         opacity: 0;
         transform: translateY(18px);
@@ -584,8 +532,6 @@
         .grid-2,
         .skills { grid-template-columns: 1fr; }
         .proof-grid { grid-template-columns: 1fr; }
-        .share-card { grid-template-columns: 1fr; }
-        .share-actions { justify-content: flex-start; }
         .cv-card { transform: none; }
       }
 
@@ -628,7 +574,6 @@
         <div class="nav-links">
           <a class="pill" href="#projects">Projects</a>
           <a class="pill" href="#experience">Experience</a>
-          <a class="pill" href="#resume">Resume link</a>
           <a class="pill" href="https://allanimire.webflow.io/" target="_blank" rel="noopener noreferrer">Portfolio</a>
           <a class="button primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">View CV</a>
         </div>
@@ -639,9 +584,9 @@
       <div class="shell hero">
         <div>
           <div class="eyebrow">Product-minded engineering for web, cloud, and AI systems</div>
-          <h1>Software systems portfolio. Resume included.</h1>
+          <h1>Software systems portfolio.</h1>
           <p class="lead">
-            I’m Allan Imire, a senior software engineer working across backend, frontend, cloud, and AI-assisted workflows. This portfolio highlights selected systems I have built, with a shareable resume link for recruiters, clients, and technical reviewers.
+            I’m Allan Imire, a senior software engineer working across backend, frontend, cloud, and AI-assisted workflows. This portfolio highlights selected systems I have built, with direct access to my resume for recruiters, clients, and technical reviewers.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="resume.pdf" download target="_blank" rel="noopener noreferrer">Download CV</a>
@@ -707,20 +652,6 @@
         </div>
       </section>
 
-      <section class="shell reveal" id="resume">
-        <div class="share-card">
-          <div>
-            <h2>Shareable resume link</h2>
-            <p>Use this portfolio as the public entry point, or share the direct PDF when a form asks specifically for a resume file.</p>
-            <a class="share-link" href="https://imireallan.github.io/resume-repository/" target="_blank" rel="noopener noreferrer">https://imireallan.github.io/resume-repository/</a>
-          </div>
-          <div class="share-actions">
-            <button class="button" id="copyResumeLink" type="button" data-copy="https://imireallan.github.io/resume-repository/">Copy link</button>
-            <a class="button primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
-          </div>
-        </div>
-      </section>
-
       <section class="shell reveal" id="experience">
         <div class="section-head">
           <h2>Professional experience</h2>
@@ -764,22 +695,6 @@
       }, { threshold: 0.14 });
 
       document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
-
-      const copyButton = document.querySelector('#copyResumeLink');
-      copyButton?.addEventListener('click', async () => {
-        const link = copyButton.dataset.copy;
-        try {
-          await navigator.clipboard.writeText(link);
-          copyButton.textContent = 'Copied';
-          copyButton.classList.add('copy-success');
-          window.setTimeout(() => {
-            copyButton.textContent = 'Copy link';
-            copyButton.classList.remove('copy-success');
-          }, 1800);
-        } catch (error) {
-          window.prompt('Copy resume link', link);
-        }
-      });
     </script>
   </body>
 </html>
